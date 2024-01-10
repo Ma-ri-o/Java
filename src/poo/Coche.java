@@ -32,16 +32,42 @@ public class Coche {
 
 	}
 
-	public String dime_largo() {
-		return "El largo del coche es " + largo;
+	public String dime_datos_generales() {
+
+		return "La plataforma del vehículo tiene " + rueda + " ruedas " + ". Mide " + largo / 1000
+				+ " metros con un ancho " + ancho + " cm y un peso de plataforma de " + peso_plataforma + " kg";
 	}
 
-	public void establece_color() {
-		color = "azul";
+	public void establece_color(String color_coche) {
+
+		color = color_coche;
 	}
-	
+
 	public String dime_color() {
 		return " El color del coche es " + color;
+	}
+
+	public void configura_asientos(String asientos_cuero) {
+
+		if (asientos_cuero == "si") {
+
+			this.asientos_cuero = true;
+		} else {
+			this.asientos_cuero = false;
+		}
+
+	}
+
+	public String dime_asientos() {
+
+		if (asientos_cuero == true) {
+
+			return " El coche tiene asientos de cuero";
+		} else {
+			return " EL coche tiene asientos de serie";
+
+		}
+
 	}
 
 }
