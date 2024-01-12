@@ -10,13 +10,21 @@ public class prueba {
 
 		Empleados trabajador2 = new Empleados("Ana");
 
-		trabajador1.cambiaSeccion("RRHH");
+		Empleados trabajador3 = new Empleados("Paola");
 
+		Empleados trabajador4 = new Empleados("Mario");
+		
 		
 
-		System.out.println(trabajador1.devuelveDatos());
+		trabajador1.cambiaSeccion("RRHH");
+		
+		
 
-		System.out.println(trabajador2.devuelveDatos());
+		System.out.println(trabajador1.devuelveDatos() + "\n" + trabajador2.devuelveDatos());
+
+		System.out.println(trabajador3.devuelveDatos());
+
+		System.out.println(trabajador4.dameIdSiguiente());
 
 	}
 
@@ -24,11 +32,16 @@ public class prueba {
 
 class Empleados {
 
-	public Empleados(String nom) {
+	public Empleados(String nom) { // Constructor
 
 		nombre = nom;
 
 		seccion = "Administración";
+
+		Id = IdSiguiente;
+
+		IdSiguiente++;
+
 	}
 
 	public void cambiaSeccion(String seccion) {// Setter
@@ -36,15 +49,22 @@ class Empleados {
 		this.seccion = seccion;
 	}
 
-	
+	public String devuelveDatos() { // Getter
 
-	public String devuelveDatos() {
+		return "El nombre es: " + nombre + "  la sección es " + seccion + " y el Id= " + Id;
+	}
 
-		return "El nombre es: " + nombre + " y la sección es " + seccion;
+	public static String dameIdSiguiente() {
+
+		return " el Id siguiente es: " + IdSiguiente;
 	}
 
 	private final String nombre;
 
 	private String seccion;
+
+	private int Id;
+
+	private static int IdSiguiente = 1;
 
 }
