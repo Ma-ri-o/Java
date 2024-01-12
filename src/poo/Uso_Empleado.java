@@ -23,21 +23,36 @@ public class Uso_Empleado {
 		 * System.out.println("Nombre : "+ empleado1.dame_nombre() + " Sueldo:  " +
 		 * empleado1.dameSueldo()+"  Fecha de Alta "+ empleado1.dameFechaContrato());
 		 */
+		
+		Jefatura jefe_RRHH=new Jefatura("jefazo", 17500, 2023, 01, 12);
+		
+		jefe_RRHH.estableceIncentivo(3500);
+		
+		
+		
 
-		Empleado[] misEmpleados = new Empleado[5];
+		Empleado[] misEmpleados = new Empleado[6];
 
 		misEmpleados[0] = new Empleado("Mario Toriz", 15600, 1994, 01, 19);
+		
 		misEmpleados[1] = new Empleado("otro", 15600, 1992, 04, 11);
+		
 		misEmpleados[2] = new Empleado("otro más ", 15600, 1990, 10, 10);
+		
 		misEmpleados[3] = new Empleado("jirafales", 3000, 2022, 02, 02);
-		misEmpleados[4] = new Empleado("Ejemplo del this");
+		
+		misEmpleados[4] = jefe_RRHH; //poliformismo en acción. Principio de sustitución
+		
+		misEmpleados[5] = new Jefatura("Maria", 9500, 1999, 5, 30);
+		
+		
 
 		/*
 		 * for(int i=0; i<3; i++) {
 		 * 
 		 * misEmpleados[i].subeSueldo(5); }
 		 */
-		for (Empleado e : misEmpleados) {
+		for (Empleado e : misEmpleados) { // for each
 
 			e.subeSueldo(5);
 
@@ -54,7 +69,9 @@ public class Uso_Empleado {
 		 */
 
 		for (Empleado e : misEmpleados) {
-			System.out.println("Nombre: " + e.dame_nombre() + " sueldo " + e.dameSueldo() + " Fecha de Alta "
+			
+			System.out.println("Nombre: " + e.dame_nombre() + " sueldo " 
+			        + e.dameSueldo() + " Fecha de Alta "
 					+ e.dameFechaContrato());
 
 		}
@@ -74,6 +91,10 @@ class Empleado {
 		GregorianCalendar calendario = new GregorianCalendar(agno, mes - 1, dia);
 
 		altaContrato = calendario.getTime();
+		
+		Id = IdSiguiente;
+
+		IdSiguiente++;
 
 	}
 
@@ -85,7 +106,7 @@ class Empleado {
 
 	public String dame_nombre() {
 
-		return nombre;
+		return nombre + " Id" + Id;
 	}
 
 	public double dameSueldo() {
@@ -110,4 +131,32 @@ class Empleado {
 	private double sueldo;
 
 	private Date altaContrato;
+
+	private static int IdSiguiente;
+
+	private int Id;
+
+}
+
+class Jefatura extends Empleado {
+
+	public Jefatura(String nom, double sue, int agno, int mes, int dia) {
+
+		super(nom, sue, agno, mes, dia);
+	}
+
+	public void estableceIncentivo(double b) {
+
+		incentivo = b;
+	}
+	
+	public double dameSueldo() {
+		
+		double sueldoJefe=super.dameSueldo();
+		
+		return sueldoJefe + incentivo;
+	}
+
+	private double incentivo;
+
 }
