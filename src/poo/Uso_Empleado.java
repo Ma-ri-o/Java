@@ -2,8 +2,6 @@ package poo;
 
 import java.util.*;
 
-// TODO: Auto-generated Javadoc
-
 public class Uso_Empleado {
 
 	public static void main(String[] args) {
@@ -26,12 +24,13 @@ public class Uso_Empleado {
 		 * empleado1.dameSueldo()+"  Fecha de Alta "+ empleado1.dameFechaContrato());
 		 */
 
-		Empleado[] misEmpleados = new Empleado[4];
+		Empleado[] misEmpleados = new Empleado[5];
 
 		misEmpleados[0] = new Empleado("Mario Toriz", 15600, 1994, 01, 19);
 		misEmpleados[1] = new Empleado("otro", 15600, 1992, 04, 11);
 		misEmpleados[2] = new Empleado("otro más ", 15600, 1990, 10, 10);
-		misEmpleados[3] = new Empleado("jirafales");
+		misEmpleados[3] = new Empleado("jirafales", 3000, 2022, 02, 02);
+		misEmpleados[4] = new Empleado("Ejemplo del this");
 
 		/*
 		 * for(int i=0; i<3; i++) {
@@ -53,12 +52,10 @@ public class Uso_Empleado {
 		 * 
 		 * }
 		 */
-		
+
 		for (Empleado e : misEmpleados) {
 			System.out.println("Nombre: " + e.dame_nombre() + " sueldo " + e.dameSueldo() + " Fecha de Alta "
 					+ e.dameFechaContrato());
-			
-			
 
 		}
 
@@ -79,10 +76,11 @@ class Empleado {
 		altaContrato = calendario.getTime();
 
 	}
-	
+
 	public Empleado(String nom) {
-		
-		nombre = nom;
+
+		this(nom, 30000, 2000, 01, 01); // this llamá al otro constructor de la clase.
+
 	}
 
 	public String dame_nombre() {
@@ -90,31 +88,16 @@ class Empleado {
 		return nombre;
 	}
 
-	/**
-	 * Dame sueldo.
-	 *
-	 * @return the double
-	 */
 	public double dameSueldo() {
 
 		return sueldo;
 	}
 
-	/**
-	 * Dame fecha contrato.
-	 *
-	 * @return the date
-	 */
 	public Date dameFechaContrato() {
 
 		return altaContrato;
 	}
 
-	/**
-	 * Sube sueldo.
-	 *
-	 * @param porcentaje the porcentaje
-	 */
 	public void subeSueldo(double porcentaje) {
 
 		double aumento = sueldo * porcentaje / 100;
@@ -122,7 +105,6 @@ class Empleado {
 		sueldo += aumento;
 	}
 
-	
 	private String nombre;
 
 	private double sueldo;
