@@ -30,6 +30,8 @@ public class Uso_Empleado {
 		
 		
 		
+		
+		
 
 		Empleado[] misEmpleados = new Empleado[6];
 
@@ -44,6 +46,10 @@ public class Uso_Empleado {
 		misEmpleados[4] = jefe_RRHH; //poliformismo en acción. Principio de sustitución
 		
 		misEmpleados[5] = new Jefatura("Maria", 9500, 1999, 5, 30);
+		
+		Jefatura jefa_finanzas = (Jefatura) misEmpleados[5];
+		
+		jefa_finanzas.estableceIncentivo(55000);
 		
 		
 
@@ -92,9 +98,11 @@ class Empleado {
 
 		altaContrato = calendario.getTime();
 		
+		IdSiguiente++;
+		
 		Id = IdSiguiente;
 
-		IdSiguiente++;
+		
 
 	}
 
@@ -106,7 +114,7 @@ class Empleado {
 
 	public String dame_nombre() {
 
-		return nombre + " Id" + Id;
+		return nombre + " Id: " + Id;
 	}
 
 	public double dameSueldo() {
@@ -134,7 +142,7 @@ class Empleado {
 
 	private static int IdSiguiente;
 
-	private int Id;
+	private int Id ;
 
 }
 
