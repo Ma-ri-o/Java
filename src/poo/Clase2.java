@@ -10,6 +10,8 @@ public class Clase2 {
 		Clase1 miobj = new Clase1();
 
 		Clase3 miobj2 = new Clase3();
+		
+		
 
 	}
 
