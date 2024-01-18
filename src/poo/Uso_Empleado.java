@@ -36,7 +36,7 @@ public class Uso_Empleado {
 
 		misEmpleados[2] = new Empleado("otro más ", 15600, 1990, 10, 10);
 
-		misEmpleados[3] = new Empleado("jirafales", 3000, 2022, 02, 02);
+		misEmpleados[3] = new Empleado("Pedro", 3000, 2022, 02, 02);
 
 		misEmpleados[4] = jefe_RRHH; // poliformismo en acción. Principio de sustitución
 
@@ -46,22 +46,8 @@ public class Uso_Empleado {
 
 		jefa_finanzas.estableceIncentivo(55000);
 		
-		Empleado director__comercial = new Jefatura("fernando", 85000, 2012, 05,05);
+		System.out.println(jefa_finanzas.tomar_decisiones("Dar más días de vacaciones a los empleados"));
 		
-		Comparable ejemplo = new Empleado("Federiko", 95000, 2011, 06,07);
-		
-		
-		if (director__comercial instanceof Empleado) {
-			
-			System.out.println("es de tipo jefatura");
-			
-		}
-		
-		if (ejemplo instanceof Comparable) {
-			
-			System.out.println("implementa la interfaz comparable");
-			
-		}
 
 		/*
 		 * for(int i=0; i<3; i++) {
@@ -175,11 +161,16 @@ class Empleado  implements Comparable {
 
 }
 
-class Jefatura extends Empleado {
+class Jefatura extends Empleado implements Jefes {
 
 	public Jefatura(String nom, double sue, int agno, int mes, int dia) {
 
 		super(nom, sue, agno, mes, dia);
+	}
+	
+	public String tomar_decisiones(String decision) {
+		
+		return "un mimembro de la dirección ha tomado la decisión de: " + decision;
 	}
 
 	public void estableceIncentivo(double b) {
