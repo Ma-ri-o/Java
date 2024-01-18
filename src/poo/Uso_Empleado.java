@@ -45,6 +45,23 @@ public class Uso_Empleado {
 		Jefatura jefa_finanzas = (Jefatura) misEmpleados[5];
 
 		jefa_finanzas.estableceIncentivo(55000);
+		
+		Empleado director__comercial = new Jefatura("fernando", 85000, 2012, 05,05);
+		
+		Comparable ejemplo = new Empleado("Federiko", 95000, 2011, 06,07);
+		
+		
+		if (director__comercial instanceof Empleado) {
+			
+			System.out.println("es de tipo jefatura");
+			
+		}
+		
+		if (ejemplo instanceof Comparable) {
+			
+			System.out.println("implementa la interfaz comparable");
+			
+		}
 
 		/*
 		 * for(int i=0; i<3; i++) {
@@ -66,6 +83,8 @@ public class Uso_Empleado {
 		 * 
 		 * }
 		 */
+		
+			Arrays.sort(misEmpleados);
 
 		for (Empleado e : misEmpleados) {
 
@@ -78,7 +97,7 @@ public class Uso_Empleado {
 
 }
 
-class Empleado {
+class Empleado  implements Comparable {
 
 	public Empleado(String nom, double sue, int agno, int mes, int dia) {
 
@@ -122,6 +141,26 @@ class Empleado {
 		double aumento = sueldo * porcentaje / 100;
 
 		sueldo += aumento;
+	}
+	
+	public int compareTo(Object miObjeto) {
+		
+		Empleado otroEmpleado=(Empleado) miObjeto;
+		
+		if(this.sueldo<otroEmpleado.sueldo) {
+			
+			return -1;
+			
+		}
+		
+		if(this.sueldo>otroEmpleado.sueldo) {
+			
+			return 1;
+		} 
+		
+		return 0;
+		
+		
 	}
 
 	private String nombre;
