@@ -24,19 +24,19 @@ public class Uso_Empleado {
 		 * empleado1.dameSueldo()+"  Fecha de Alta "+ empleado1.dameFechaContrato());
 		 */
 
-		Jefatura jefe_RRHH = new Jefatura("jefazo", 17500, 2023, 01, 12);
+		Jefatura jefe_RRHH = new Jefatura("Juan", 17500, 2023, 01, 12);
 
 		jefe_RRHH.estableceIncentivo(3500);
 
 		Empleado[] misEmpleados = new Empleado[6];
 
-		misEmpleados[0] = new Empleado("Mario Toriz", 15600, 1994, 01, 19);
+		misEmpleados[0] = new Empleado("Ana", 15600, 1994, 01, 19);
 
-		misEmpleados[1] = new Empleado("otro", 15600, 1992, 04, 11);
+		misEmpleados[1] = new Empleado("Carlos", 15600, 1992, 04, 11);
 
-		misEmpleados[2] = new Empleado("otro más ", 15600, 1990, 10, 10);
+		misEmpleados[2] = new Empleado("Paco ", 15600, 1990, 10, 10);
 
-		misEmpleados[3] = new Empleado("Pedro", 3000, 2022, 02, 02);
+		misEmpleados[3] = new Empleado("Antonio", 3000, 2022, 02, 02);
 
 		misEmpleados[4] = jefe_RRHH; // poliformismo en acción. Principio de sustitución
 
@@ -46,7 +46,25 @@ public class Uso_Empleado {
 
 		jefa_finanzas.estableceIncentivo(55000);
 		
+		Empleado director_comercial = new Jefatura("Sandra", 85000, 2012, 05,05);
+		
+		Comparable ejemplo = new Empleado ("Elisabeth", 95000, 2011, 06,06);// Principio de sustitución
+		
+		if(director_comercial instanceof Empleado) {
+			
+			System.out.println("Es de tipo Jefatura");
+		}
+		
+		if(ejemplo instanceof Comparable) {
+			
+			System.out.println("implementa la interfaz comparable");
+			
+		}
+		
+		
 		System.out.println(jefa_finanzas.tomar_decisiones("Dar más días de vacaciones a los empleados"));
+		
+		
 		
 
 		/*
@@ -70,7 +88,7 @@ public class Uso_Empleado {
 		 * }
 		 */
 		
-			Arrays.sort(misEmpleados);
+			Arrays.sort(misEmpleados); //
 
 		for (Empleado e : misEmpleados) {
 
@@ -129,17 +147,23 @@ class Empleado  implements Comparable {
 		sueldo += aumento;
 	}
 	
-	public int compareTo(Object miObjeto) {
+	/**
+	 * Compare to.
+	 *
+	 * @param miObjeto the mi objeto
+	 * @return the int
+	 */
+	public int compareTo(Object miObjeto) { //se sobre escribe el metodo de la interfaz comparable
 		
-		Empleado otroEmpleado=(Empleado) miObjeto;
+		Empleado otroEmpleado=(Empleado) miObjeto; //refundición  //creando objet otroEmpleado
 		
-		if(this.sueldo<otroEmpleado.sueldo) {
+		if(this.Id<otroEmpleado.Id) { 
 			
 			return -1;
 			
 		}
 		
-		if(this.sueldo>otroEmpleado.sueldo) {
+		if(this.Id>otroEmpleado.Id) {
 			
 			return 1;
 		} 
