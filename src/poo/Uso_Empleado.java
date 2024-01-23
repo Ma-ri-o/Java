@@ -45,30 +45,32 @@ public class Uso_Empleado {
 		Jefatura jefa_finanzas = (Jefatura) misEmpleados[5];
 
 		jefa_finanzas.estableceIncentivo(55000);
-		
-		Empleado director_comercial = new Jefatura("Sandra", 85000, 2012, 05,05);
-		
-		Comparable ejemplo = new Empleado ("Elisabeth", 95000, 2011, 06,06);// Principio de sustitución
-		
-		if(director_comercial instanceof Empleado) {
-			
-			System.out.println("Es de tipo Jefatura");
-		}
-		
-		if(ejemplo instanceof Comparable) {
-			
-			System.out.println("implementa la interfaz comparable");
-			
-		}
-		
-		
-		System.out.println(jefa_finanzas.tomar_decisiones("Dar más días de vacaciones a los empleados"));
-		
-		
-		
+
+		Empleado director_comercial = new Jefatura("Sandra", 85000, 2012, 05, 05);
+
+		Comparable ejemplo = new Empleado("Elisabeth", 95000, 2011, 06, 06);// Principio de sustitución
 
 		/*
-		 * for(int i=0; i<3; i++) {
+		 * if(director_comercial instanceof Empleado) {
+		 * 
+		 * System.out.println("Es de tipo Jefatura"); }
+		 * 
+		 * if(ejemplo instanceof Comparable) {
+		 * 
+		 * System.out.println("implementa la interfaz comparable");
+		 * 
+		 * }
+		 */
+
+		System.out.println(jefa_finanzas.tomar_decisiones("Dar más días de vacaciones a los empleados"));
+		
+		System.out.println("el Jefe " + jefa_finanzas.dame_nombre() + " tiene un bonus de " +
+		jefa_finanzas.establece_bonus(500));
+		
+		System.out.println(misEmpleados[3].dame_nombre() + " tiene un bonus de " + misEmpleados[3].establece_bonus(200));
+
+		/*
+		 * /Users/mac/Documents/Curso-java-2024/poo for(int i=0; i<3; i++) {
 		 * 
 		 * misEmpleados[i].subeSueldo(5); }
 		 */
@@ -87,8 +89,8 @@ public class Uso_Empleado {
 		 * 
 		 * }
 		 */
-		
-			Arrays.sort(misEmpleados); //
+
+		Arrays.sort(misEmpleados); //
 
 		for (Empleado e : misEmpleados) {
 
@@ -101,7 +103,7 @@ public class Uso_Empleado {
 
 }
 
-class Empleado  implements Comparable {
+class Empleado implements Comparable, Trabajadores{
 
 	public Empleado(String nom, double sue, int agno, int mes, int dia) {
 
@@ -117,6 +119,11 @@ class Empleado  implements Comparable {
 
 		Id = IdSiguiente;
 
+	}
+	
+	public double establece_bonus(double gratificacion) {
+		
+		return Trabajadores.bonus_base;
 	}
 
 	public Empleado(String nom) {
@@ -146,31 +153,30 @@ class Empleado  implements Comparable {
 
 		sueldo += aumento;
 	}
-	
+
 	/**
 	 * Compare to.
 	 *
 	 * @param miObjeto the mi objeto
 	 * @return the int
 	 */
-	public int compareTo(Object miObjeto) { //se sobre escribe el metodo de la interfaz comparable
-		
-		Empleado otroEmpleado=(Empleado) miObjeto; //refundición  //creando objet otroEmpleado
-		
-		if(this.Id<otroEmpleado.Id) { 
-			
+	public int compareTo(Object miObjeto) { // se sobre escribe el metodo de la interfaz comparable
+
+		Empleado otroEmpleado = (Empleado) miObjeto; // refundición //creando objet otroEmpleado
+
+		if (this.Id < otroEmpleado.Id) {
+
 			return -1;
-			
+
 		}
-		
-		if(this.Id>otroEmpleado.Id) {
-			
+
+		if (this.Id > otroEmpleado.Id) {
+
 			return 1;
-		} 
-		
+		}
+
 		return 0;
-		
-		
+
 	}
 
 	private String nombre;
@@ -191,10 +197,17 @@ class Jefatura extends Empleado implements Jefes {
 
 		super(nom, sue, agno, mes, dia);
 	}
-	
+
 	public String tomar_decisiones(String decision) {
-		
+
 		return "un mimembro de la dirección ha tomado la decisión de: " + decision;
+	}
+	
+	public double establece_bonus(double gratificacion) {
+		
+		double prima= 2000;
+
+		return Trabajadores.bonus_base + gratificacion + prima ;
 	}
 
 	public void estableceIncentivo(double b) {
@@ -217,16 +230,8 @@ class Director extends Jefatura {
 
 	public Director(String nom, double sue, int agno, int mes, int dia) {
 
-		super(nom, sue, agno, mes, dia) ;
-		
-		
-		
-		
-		
-		
+		super(nom, sue, agno, mes, dia);
+
 	}
-	
-	
-	
 
 }
