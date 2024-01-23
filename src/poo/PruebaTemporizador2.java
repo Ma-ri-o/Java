@@ -38,6 +38,27 @@ class Reloj {
 	}
 
 	public void enMarcha() {
+		
+		 class DameLaHora2 implements ActionListener {
+			
+			public void actionPerformed(ActionEvent evento) {
+				
+				Date ahora=new Date();
+				
+				System.out.println("Te pongo la hora cada 3 sg " + ahora);
+				
+				if(sonido) {
+					
+					Toolkit.getDefaultToolkit().beep();
+				}
+					
+				
+				
+			}
+			
+			
+
+		}
 
 		ActionListener oyente = new DameLaHora2();
 
@@ -51,24 +72,5 @@ class Reloj {
 
 	private boolean sonido;
 
-	private class DameLaHora2 implements ActionListener {
-		
-		public void actionPerformed(ActionEvent evento) {
-			
-			Date ahora=new Date();
-			
-			System.out.println("Te pongo la hora cada 3 sg " + ahora);
-			
-			if(sonido) {
-				
-				Toolkit.getDefaultToolkit().beep();
-			}
-				
-			
-			
-		}
-		
-		
-
-	}
+	
 }
