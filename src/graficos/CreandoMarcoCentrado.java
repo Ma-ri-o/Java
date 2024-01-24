@@ -36,7 +36,7 @@ class MarcoCentrado extends JFrame {
 		
 		setSize(anchoPantalla/2, alturaPantalla/2);
 		
-		setLocation(alturaPantalla/4, anchoPantalla/4);
+		setLocation( anchoPantalla/4, alturaPantalla/4);
 		
 		setTitle("marcoCentral");
 		
