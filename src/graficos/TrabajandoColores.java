@@ -13,15 +13,14 @@ public class TrabajandoColores {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		MarcoConColor mimarco = new MarcoConColor();
-		
+
 		mimarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		mimarco.setVisible(true);
 
 	}
-	
 
 }
 
@@ -36,34 +35,33 @@ class MarcoConColor extends JFrame {
 		LaminaConColor milamina = new LaminaConColor();
 
 		add(milamina);
-		
+
 		milamina.setBackground(Color.darkGray);
 	}
 }
 
 class LaminaConColor extends JPanel {
 
-   
-    public void paintComponent(Graphics g) {
-    	
-    	super.paintComponent(g);
+	public void paintComponent(Graphics g) {
 
-        Graphics2D g2 = (Graphics2D) g;
+		super.paintComponent(g);
 
-        Rectangle2D rectangulo = new Rectangle2D.Double(100, 100, 200, 150);
-        
-        g2.setPaint(Color.RED);
+		Graphics2D g2 = (Graphics2D) g;
 
-        g2.draw(rectangulo);
-        
-        g2.setPaint(Color.BLUE);
+		Rectangle2D rectangulo = new Rectangle2D.Double(100, 100, 200, 150);
 
-        Ellipse2D ellipse = new Ellipse2D.Double();
-        
-        g2.setPaint(new Color(109,172,59).darker());
-        
-        ellipse.setFrame(rectangulo);
+		g2.setPaint(Color.RED);
 
-        g2.fill(ellipse);
-    }
+		g2.draw(rectangulo);
+
+		g2.setPaint(Color.BLUE);
+
+		Ellipse2D ellipse = new Ellipse2D.Double();
+
+		g2.setPaint(new Color(109, 172, 59).darker());
+
+		ellipse.setFrame(rectangulo);
+
+		g2.fill(ellipse);
+	}
 }
